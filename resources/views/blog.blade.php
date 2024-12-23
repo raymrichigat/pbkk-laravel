@@ -110,12 +110,12 @@
 
   <header class="bg-white shadow">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold tracking-tight text-gray-900">About Page</h1>
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">BLog Page</h1>
     </div>
   </header>
   <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <p>WELCOME TO MY ABOUT PAGE</p>
+      <p>WELCOME TO MY BLOG PAGE</p>
     </div>
   </main>
 </div>
