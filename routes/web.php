@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Arr;
+use App\Models\Post;
 
 Route::get('/', function () {
     return view('home', ['title'=>'Home Page']);
@@ -12,45 +13,12 @@ Route::get('/about', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts', ['title'=>'Blog Page', 'posts'=>[
-        [
-            'id'=>1,
-            'slug'=>'judul-artikel-1',
-            'title'=>'Judul Artikel 1', 
-            'author'=>'Genta Putra',
-            'body'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
-        ],
-        [
-            'id'=>2,
-            'slug'=>'judul-artikel-2',
-            'title'=>'Judul Artikel 2', 
-            'author'=>'Genta Putra',
-            'body'=>'Lorem anjay'
-        ]
-    ]]);
+    return view('posts', ['title'=>'Blog Page', 'posts'=>Post::all()]);
 });
 
 Route::get('/posts/{slug}', function ($slug) {
-    $posts=[
-        [
-            'id'=>1,
-            'slug'=>'judul-artikel-1',
-            'title'=>'Judul Artikel 1', 
-            'author'=>'Genta Putra',
-            'body'=>'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.'
-        ],
-        [
-            'id'=>2,
-            'slug'=>'judul-artikel-2',
-            'title'=>'Judul Artikel 2', 
-            'author'=>'Genta Putra',
-            'body'=>'Lorem anjay'
-        ]
-    ];
-
-    $post = Arr::first($posts, function($post) use ($slug){
-        return $post['slug'] == $slug;
-    });
+    
+    $post = Post::find($slug);
 
     return view('post', ['title'=>'Single Post', 'post'=>$post]);
 });
